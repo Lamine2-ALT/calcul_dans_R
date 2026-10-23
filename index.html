@@ -12,6 +12,9 @@
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]']]
       },
+      chtml: {
+        linebreaks: { automatic: true, width: 'container' }
+      },
       options: {
         renderActions: {
           addMenu: []
@@ -316,8 +319,10 @@
     }
 
     .ex-body {
-      overflow-x: auto;
+      min-width: 0;
+      overflow-x: visible;
       padding-bottom: 2px;
+      overflow-wrap: anywhere;
     }
 
     .ex-body p {
@@ -336,9 +341,22 @@
 
     mjx-container {
       max-width: 100%;
-      overflow-x: auto;
-      overflow-y: hidden;
+      overflow-x: visible;
+      overflow-y: visible;
       padding-bottom: 2px;
+    }
+
+    mjx-container[jax="CHTML"][display="true"] {
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 600px) {
+      .exercise { padding: 12px; }
+      .ex-body { font-size: 0.97rem; }
+      mjx-container[jax="CHTML"][display="true"] {
+        text-align: left;
+      }
     }
 
     .ex-tools {
