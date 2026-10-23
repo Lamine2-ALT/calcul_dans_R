@@ -13,7 +13,7 @@
         displayMath: [['\\[', '\\]']]
       },
       chtml: {
-        linebreaks: { automatic: true, width: 'container' }
+        linebreaks: { automatic: false }
       },
       options: {
         renderActions: {
@@ -261,7 +261,8 @@
       padding: 16px;
       margin-bottom: 18px;
       box-shadow: var(--shadow);
-      overflow-wrap: break-word;
+      overflow-wrap: normal;
+      word-break: normal;
     }
 
     .ex-header {
@@ -320,9 +321,9 @@
 
     .ex-body {
       min-width: 0;
-      overflow-x: visible;
       padding-bottom: 2px;
-      overflow-wrap: anywhere;
+      overflow-wrap: normal;
+      word-break: normal;
     }
 
     .ex-body p {
@@ -340,15 +341,19 @@
     }
 
     mjx-container {
-      max-width: 100%;
-      overflow-x: visible;
-      overflow-y: visible;
+      overflow: visible;
       padding-bottom: 2px;
+      white-space: nowrap;
+      word-break: keep-all;
     }
 
     mjx-container[jax="CHTML"][display="true"] {
+      display: block;
       max-width: 100%;
-      overflow-wrap: anywhere;
+      overflow: visible;
+      white-space: nowrap;
+      overflow-wrap: normal;
+      word-break: keep-all;
     }
 
     @media (max-width: 600px) {
@@ -356,6 +361,7 @@
       .ex-body { font-size: 0.97rem; }
       mjx-container[jax="CHTML"][display="true"] {
         text-align: left;
+        font-size: min(0.85em, 3vw) !important;
       }
     }
 
